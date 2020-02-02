@@ -195,13 +195,13 @@ require_once('backend_assets/db.php');
                                   if (isset($assoc)) {
                                     ?>
                                     <!-- user already liked -->
-                                    <i class="fa fa-heart" onclick="like()" data-id="<?=$value['id']?>"></i>
+                                    <i class="fa fa-heart" onclick="like()" value="<?=$value['id']?>"></i>
                                     <!-- <i class="hide fa fa-heart-o" onclick="like()"  data-id="<?=$value['id']?>"></i> -->
                                     <?php
                                   }else {
                                     ?>
                                     <!-- user not liked yet -->
-                                    <i class="fa fa-heart-o" onclick="unlike()" data-id="<?=$value['id']?>"></i>
+                                    <i class="fa fa-heart-o" onclick="unlike()" value="<?=$value['id']?>"></i>
                                     <!-- <i class="hide fa fa-heart" onclick="like()" data-id="<?=$value['id']?>"></i> -->
                                     <?php
                                   }
@@ -423,10 +423,13 @@ require_once('backend_assets/db.php');
    <script type="text/javascript">
 
 
+
+
    function like() {
      // already liked
-     var product_id = $(this).data('name');
+     var product_id = $(this).val();
      console.log(product_id);
+     //fuad
      // $post = $(this);
     //  $.ajax({
 		// 		url: 'index.php',
