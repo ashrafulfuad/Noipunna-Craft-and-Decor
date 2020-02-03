@@ -209,7 +209,9 @@ require_once('backend_assets/db.php');
                     ?>
                         <div class="gallery_product col-md-3 col-sm-4 filter <?= $value['cat_id'] ?>">
                             <div class="featured-product">
-                                <a href="product_details.php?id=<?= $value['id'] ?>"><img src="backend_assets/photos/product_photo/<?= $value['product_photo_one'] ?>" alt="featured-product-img" class="img-responsive" style="height:280px; width: 100%"></a>
+                                <a href="product_details.php?id=<?= $value['id'] ?>">
+                                  <img src="backend_assets/photos/product_photo/<?= $value['product_photo_one'] ?>" alt="featured-product-img" class="img-responsive" style="height:280px; width: 100%">
+                                </a>
                                 <div class="overlay2 text-center">
                                     <?php
                                     $likes = "SELECT * FROM likes WHERE ip_address = '$ip_address' AND product_id='" . $value['id'] . "'";
@@ -222,14 +224,14 @@ require_once('backend_assets/db.php');
 
                                     ?>
                                         <!-- user already liked -->
-                                        <i class="like fa fa-heart sss" data-id="<?= $value['id'] ?>"></i>
+                                        <i class="like fa fa-heart sss" data-id="<?= $value['id'] ?>" style="color: blue"></i>
                                         <i class="unlike hide fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
                                     <?php
                                     else :
                                     ?>
                                         <!-- user not liked yet -->
                                         <i class="like fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
-                                        <i class="unlike hide fa fa-heart" data-id="<?= $value['id'] ?>"></i>
+                                        <i class="unlike hide fa fa-heart" data-id="<?= $value['id'] ?>" style="color: blue"></i>
                                     <?php
                                     endif;
                                     ?>
@@ -243,11 +245,8 @@ require_once('backend_assets/db.php');
                                 <div class="clearfix"></div>
                             </div>
                             <div class="ratings">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half"></i>
+                              <i class="fa fa-heart"  style="color: red"></i>
+                              <span>| (<?= $value['likes']?> People's Reacted)</span>
                             </div>
                         </div>
                     <?php
@@ -280,7 +279,11 @@ require_once('backend_assets/db.php');
                         <div class="upcoming-prouct-details">
                             <h3>New Product</h3>
                             <h2>Microsoft Surface Pro</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Loremsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It hasived not only five centuries, with the release of Letraset sheets.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                              Loremsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a
+                               type specimen book. It hasived not only five centuries, with the release of
+                                Letraset sheets.</p>
                         </div>
                         <div class="luanch">
                             <h2>launch in</h2>
@@ -343,6 +346,50 @@ require_once('backend_assets/db.php');
                     $product_list_from_db = "SELECT * FROM product_table";
                     $query = mysqli_query($db_connect, $product_list_from_db);
 
+                    $ip_address = get_client_ip();
+
+                    if (isset($_POST['liked'])) {
+                        $postid = $_POST['postid'];
+                        $product = "SELECT * FROM product_table WHERE id='$postid'";
+                        $result = mysqli_query($db_connect, $product);
+                        $row = mysqli_fetch_array($result);
+                        $n = $row['likes'];
+                        $likes_check = "SELECT * FROM likes WHERE ip_address='$ip_address' AND product_id='$postid'";
+                        $likes_check = mysqli_query($db_connect, $likes_check);
+                        if(mysqli_num_rows($likes_check) > 0) {
+                            $n = $n - 1;
+                            mysqli_query($db_connect, "DELETE FROM likes WHERE product_id='$postid' AND ip_address='$ip_address'");
+                            mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id=$postid");
+                        } else {
+                            $n = $n + 1;
+                            $likes_query = "INSERT INTO likes (ip_address, product_id) VALUES ('$ip_address', '$postid')";
+                            mysqli_query($db_connect, $likes_query);
+                            mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id='$postid'");
+                        }
+                        exit();
+                    }
+                    if (isset($_POST['unliked'])) {
+                        $postid = $_POST['postid'];
+                        $product = "SELECT * FROM product_table WHERE id='$postid'";
+                        $result = mysqli_query($db_connect, $product);
+                        $row = mysqli_fetch_array($result);
+                        $n = $row['likes'];
+
+                        $likes_check = "SELECT * FROM likes WHERE ip_address='$ip_address' AND product_id='$postid'";
+                        $likes_check = mysqli_query($db_connect, $likes_check);
+                        if(mysqli_num_rows($likes_check) > 0) {
+                            $n = $n - 1;
+                            mysqli_query($db_connect, "DELETE FROM likes WHERE product_id='$postid' AND ip_address='$ip_address'");
+                            mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id=$postid");
+                        } else {
+                            $n = $n + 1;
+                            $likes_query = "INSERT INTO likes (ip_address, product_id) VALUES ('$ip_address', '$postid')";
+                            mysqli_query($db_connect, $likes_query);
+                            mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id='$postid'");
+                        }
+                        exit();
+                    }
+
                     foreach ($query as $value) {
                     ?>
                         <div class="gallery_product col-md-3">
@@ -351,7 +398,28 @@ require_once('backend_assets/db.php');
                                     <img src="backend_assets/photos/product_photo/<?= $value['product_photo_one'] ?>" alt="featured-product-img" class="img-responsive" style="height:280px; width:100%">
                                 </a>
                                 <div class="overlay2 text-center">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                  <?php
+                                  $likes = "SELECT * FROM likes WHERE ip_address = '$ip_address' AND product_id='" . $value['id'] . "'";
+
+                                  $results = mysqli_query($db_connect, $likes);
+
+                                  //fuad
+                                  if (mysqli_num_rows($results) == 1) :
+
+
+                                  ?>
+                                      <!-- user already liked -->
+                                      <i class="like fa fa-heart sss" data-id="<?= $value['id'] ?>" style="color: blue"></i>
+                                      <i class="unlike hide fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
+                                  <?php
+                                  else :
+                                  ?>
+                                      <!-- user not liked yet -->
+                                      <i class="like fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
+                                      <i class="unlike hide fa fa-heart" data-id="<?= $value['id'] ?>" style="color: blue"></i>
+                                  <?php
+                                  endif;
+                                  ?>
                                     <a href="#"><i class="fa fa-random"></i></a>
                                     <a href="#"><i class="fa fa-shopping-basket"></i></a>
                                 </div>
@@ -361,11 +429,8 @@ require_once('backend_assets/db.php');
                                 <div class="clearfix"></div>
                             </div>
                             <div class="ratings">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half"></i>
+                              <i class="fa fa-heart"  style="color: red"></i>
+                              <span>| (<?= $value['likes']?> People's Reacted)</span>
                             </div>
                         </div>
                     <?php

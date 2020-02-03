@@ -61,12 +61,8 @@ require_once('backend_assets/db.php');
                        <div>
                           <h3><?=$after_assoc['product_name']?></h3>
                           <h4>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span>| (124 Reviews)</span>
+                              <i class="fa fa-heart"  style="color: red"></i>
+                              <span>| (<?= $after_assoc['likes']?> People's Reacted)</span>
                           </h4>
                           <h5>TK <?=$after_assoc['product_price']?></h5>
                           <p><?=substr($after_assoc['product_desc'], 0, 300)?></p>
@@ -233,11 +229,8 @@ require_once('backend_assets/db.php');
                                 <div class="clearfix"></div>
                             </div>
                             <div class="ratings">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half"></i>
+                              <i class="fa fa-heart"  style="color: red"></i>
+                              <span>| (<?= $value['likes']?> People's Reacted)</span>
                             </div>
                         </div>
                         <?php
