@@ -436,7 +436,7 @@ require_once('backend_assets/db.php');
      // already liked
      var product_id = $(this).data;
      console.log(product_id);
-     //fuad
+     //fuad mia
      // $post = $(this);
     //  $.ajax({
 		// 		url: 'index.php',
@@ -452,7 +452,7 @@ require_once('backend_assets/db.php');
       alert("not yet liked");
     }
 
- 
+
    <?php
    require('frontend_assets/index_js.php');
    ?>
