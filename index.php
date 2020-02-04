@@ -244,7 +244,7 @@ require_once('backend_assets/db.php');
                                 <p><?= $value['product_name'] ?></p><span>TK <?= $value['product_price'] ?></span>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="ratings">
+                            <div class="ratings" id="like_count">
                               <i class="fa fa-heart"  style="color: red"></i>
                               <span>| (<?= $value['likes']?> People's Reacted)</span>
                             </div>
@@ -259,10 +259,6 @@ require_once('backend_assets/db.php');
     </div>
 </section>
 <!-- Featured Part End -->
-
-
-
-
 
 <!-- Upcoming Part Start -->
 <section id="upcoming">
@@ -428,7 +424,7 @@ require_once('backend_assets/db.php');
                                 <p><?= $value['product_name'] ?></p><span>TK <?= $value['product_price'] ?></span>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="ratings">
+                            <div class="ratings" id="review">
                               <i class="fa fa-heart"  style="color: red"></i>
                               <span>| (<?= $value['likes']?> People's Reacted)</span>
                             </div>
@@ -567,6 +563,7 @@ require('frontend_assets/index_js.php');
             });
         });
     })(jQuery);
+
 </script>
 </body>
 </html>
