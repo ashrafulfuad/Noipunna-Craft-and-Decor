@@ -32,14 +32,55 @@ require_once('backend_assets/db.php');
    </section>
    <!-- About Banner End -->
 
-
-
-
     <?php
         $user_id = $_GET['id'];
         $select_data_from_db = "SELECT * FROM product_table WHERE id= '$user_id'";
         $query = mysqli_query($db_connect, $select_data_from_db);
         $after_assoc = mysqli_fetch_assoc($query);
+
+        $ip_address = get_client_ip();
+        if (isset($_POST['liked'])) {
+            $postid = $_POST['postid'];
+            $product = "SELECT * FROM product_table WHERE id='$postid'";
+            $result = mysqli_query($db_connect, $product);
+            $row = mysqli_fetch_array($result);
+            $n = $row['likes'];
+            $likes_check = "SELECT * FROM likes WHERE ip_address='$ip_address' AND product_id='$postid'";
+            $likes_check = mysqli_query($db_connect, $likes_check);
+            if(mysqli_num_rows($likes_check) > 0) {
+                $n = $n - 1;
+                mysqli_query($db_connect, "DELETE FROM likes WHERE product_id='$postid' AND ip_address='$ip_address'");
+                mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id=$postid");
+            } else {
+                $n = $n + 1;
+                $likes_query = "INSERT INTO likes (ip_address, product_id) VALUES ('$ip_address', '$postid')";
+                mysqli_query($db_connect, $likes_query);
+                mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id='$postid'");
+            }
+            exit();
+        }
+        if (isset($_POST['unliked'])) {
+            $postid = $_POST['postid'];
+            $product = "SELECT * FROM product_table WHERE id='$postid'";
+            $result = mysqli_query($db_connect, $product);
+            $row = mysqli_fetch_array($result);
+            $n = $row['likes'];
+
+            $likes_check = "SELECT * FROM likes WHERE ip_address='$ip_address' AND product_id='$postid'";
+            $likes_check = mysqli_query($db_connect, $likes_check);
+            if(mysqli_num_rows($likes_check) > 0) {
+                $n = $n - 1;
+                mysqli_query($db_connect, "DELETE FROM likes WHERE product_id='$postid' AND ip_address='$ip_address'");
+                mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id=$postid");
+            } else {
+                $n = $n + 1;
+                $likes_query = "INSERT INTO likes (ip_address, product_id) VALUES ('$ip_address', '$postid')";
+                mysqli_query($db_connect, $likes_query);
+                mysqli_query($db_connect, "UPDATE product_table SET likes='$n' WHERE id='$postid'");
+            }
+            exit();
+        }
+
     ?>
    <!-- Product Details Part start -->
    <section id="details-of-product">
@@ -60,9 +101,10 @@ require_once('backend_assets/db.php');
                    <div class="product-details">
                        <div>
                           <h3><?=$after_assoc['product_name']?></h3>
+                          <!-- //fuad -->
                           <h4>
                               <i class="fa fa-heart"  style="color: red"></i>
-                              <span>| (<?= $after_assoc['likes']?> People's Reacted)</span>
+                              | (<span id="auto_load" value="<?=$_GET['id']?>"><?= $after_assoc['likes']?></span> People's Reacted)
                           </h4>
                           <h5>TK <?=$after_assoc['product_price']?></h5>
                           <p><?=substr($after_assoc['product_desc'], 0, 300)?></p>
@@ -85,17 +127,35 @@ require_once('backend_assets/db.php');
                     </div>
                    </div>
                    <div class="add-wishlist">
-                       <a href="#"><i class="fa fa-heart"></i></a>
+                     <?php
+                     $likes = "SELECT * FROM likes WHERE ip_address = '$ip_address' AND product_id='" . $after_assoc['id'] . "'";
+                     $results = mysqli_query($db_connect, $likes);
+
+                     if (mysqli_num_rows($results) == 1):
+                     ?>
+                         <!-- user already liked -->
+                         <i class="like fa fa-heart sss" data-id="<?= $after_assoc['id'] ?>" style="color: blue"></i>
+                         <i class="unlike hide fa fa-heart-o" data-id="<?= $after_assoc['id'] ?>"></i>
+                     <?php
+                     else :
+                     ?>
+                         <!-- user not liked yet -->
+                         <i class="like fa fa-heart-o" data-id="<?= $after_assoc['id'] ?>"></i>
+                         <i class="unlike hide fa fa-heart" data-id="<?= $after_assoc['id'] ?>" style="color: blue"></i>
+                     <?php
+                     endif;
+                     ?>
+
                        <a href="#"><i class="fa fa-random"></i></a>
                        <a href="#"><i class="fa fa-shopping-basket"></i></a>
                    </div>
                    <div class="code-cate">
-                     <?php
-                     $p_cat_id = $after_assoc['p_cat_id'];
-                     $select_p_cat_id_from_db = "SELECT * FROM p_category_table WHERE id ='$p_cat_id'";
-                     $query_as_p_cat_id = mysqli_query($db_connect, $select_p_cat_id_from_db);
-                     $after_assoc_as_p_cat_id = mysqli_fetch_assoc($query_as_p_cat_id);
-                     ?>
+                       <?php
+                       $p_cat_id = $after_assoc['p_cat_id'];
+                       $select_p_cat_id_from_db = "SELECT * FROM p_category_table WHERE id ='$p_cat_id'";
+                       $query_as_p_cat_id = mysqli_query($db_connect, $select_p_cat_id_from_db);
+                       $after_assoc_as_p_cat_id = mysqli_fetch_assoc($query_as_p_cat_id);
+                       ?>
                        <p>Category<a href="#" class="tahsan3">: <?=$after_assoc_as_p_cat_id['p_category_name']?></a></p>
                    </div>
                </div>
@@ -219,7 +279,28 @@ require_once('backend_assets/db.php');
                                     <img src="backend_assets/photos/product_photo/<?=$value['product_photo_one']?>" alt="featured-product-img" class="img-responsive" style="height:280px; width:100%">
                                 </a>
                                 <div class="overlay2 text-center">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <?php
+                                    $likes = "SELECT * FROM likes WHERE ip_address = '$ip_address' AND product_id='" . $value['id'] . "'";
+
+                                    $results = mysqli_query($db_connect, $likes);
+
+                                    //fuad
+                                    if (mysqli_num_rows($results) == 1) :
+
+
+                                    ?>
+                                        <!-- user already liked -->
+                                        <i class="like fa fa-heart sss" data-id="<?= $value['id'] ?>" style="color: blue"></i>
+                                        <i class="unlike hide fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
+                                    <?php
+                                    else :
+                                    ?>
+                                        <!-- user not liked yet -->
+                                        <i class="like fa fa-heart-o" data-id="<?= $value['id'] ?>"></i>
+                                        <i class="unlike hide fa fa-heart" data-id="<?= $value['id'] ?>" style="color: blue"></i>
+                                    <?php
+                                    endif;
+                                    ?>
                                     <a href="#"><i class="fa fa-random"></i></a>
                                     <a href="#"><i class="fa fa-shopping-basket"></i></a>
                                 </div>
@@ -301,10 +382,105 @@ require_once('backend_assets/db.php');
 
 
 
+   <?php
+   require('frontend_assets/footer.php');
+   function get_client_ip()
+   {
+       $ipaddress = '';
+       if (getenv('HTTP_CLIENT_IP'))
+           $ipaddress = getenv('HTTP_CLIENT_IP');
+       else if (getenv('HTTP_X_FORWARDED_FOR'))
+           $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+       else if (getenv('HTTP_X_FORWARDED'))
+           $ipaddress = getenv('HTTP_X_FORWARDED');
+       else if (getenv('HTTP_FORWARDED_FOR'))
+           $ipaddress = getenv('HTTP_FORWARDED_FOR');
+       else if (getenv('HTTP_FORWARDED'))
+           $ipaddress = getenv('HTTP_FORWARDED');
+       else if (getenv('REMOTE_ADDR'))
+           $ipaddress = getenv('REMOTE_ADDR');
+       else
+           $ipaddress = 'UNKNOWN';
+       return $ipaddress;
+   }
+   ?>
+
+
+
 
 
 
    <?php
-   require('frontend_assets/footer.php');
    require('frontend_assets/details_js.php');
    ?>
+
+
+   <script type="text/javascript">
+       (function($) {
+           "use strict";
+
+           $('.like').on('click', function() {
+               var postid = $(this).data('id');
+               var This = $(this);
+
+
+               $.ajax({
+                   url: 'product_details.php',
+                   type: 'post',
+                   data: {
+                       'liked': 1,
+                       'postid': postid
+                   },
+                   success: function(response) {
+                       // console.log(response);
+                       This.addClass('hide').addClass('s_like');
+                       This.siblings().removeClass('hide');
+                   }
+               });
+           });
+
+           // when the user clicks on unlike
+           $('.unlike').on('click', function() {
+               var postid = $(this).data('id');
+               var This = $(this);
+
+               $.ajax({
+                   url: 'product_details.php',
+                   type: 'post',
+                   data: {
+                       'unliked': 1,
+                       'postid': postid
+                   },
+                   success: function(response) {
+                       // console.log(response);
+                       This.addClass('hide');
+                       This.siblings().removeClass('hide');
+                   }
+               });
+           });
+
+
+
+
+
+
+        setInterval(function () {
+          var id = $('#auto_load span').innerHTML;
+
+          alert(id);
+          // console.log(id);
+
+ 				// $('#auto_load').load('demo.php?id='+ )
+
+
+ 			}, 3000);
+
+
+       })(jQuery);
+
+   </script>
+
+
+
+ </body>
+ </html>

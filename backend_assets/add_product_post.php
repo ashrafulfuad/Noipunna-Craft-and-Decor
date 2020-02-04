@@ -19,6 +19,10 @@ product_photo_three, product_photo_four) VALUES ('$product_name', '$product_pric
    '$product_desc', '$p_cat_id', '$cat_id',
     'default_p_photo.jpg', 'default_p_photo.jpg', 'default_p_photo.jpg', 'default_p_photo.jpg')";
 mysqli_query($db_connect, $insert_product);
+
+
+// echo "done";
+// die;
 if ($product_photo_one['name'] == '' && $product_photo_two['name'] == '' && $product_photo_three['name'] == '' && $product_photo_four['name'] == '') {
   header('location: all_product_list.php');
 }
@@ -35,7 +39,7 @@ $user_id = mysqli_insert_id($db_connect);
       die;
     }
     $uploading_image_size = $product_photo_one['size'];
-    if($uploading_image_size >= 500000){
+    if($uploading_image_size >= 500000000){
       echo "You can not upload Photo more than 5 MB";
       die;
     }
@@ -58,7 +62,7 @@ $user_id = mysqli_insert_id($db_connect);
       die;
     }
     $uploading_image_size_two = $product_photo_two['size'];
-    if($uploading_image_size_two >= 500000){
+    if($uploading_image_size_two >= 5000000000){
       echo "You can not upload Photo more than 5 MB";
       die;
     }
@@ -81,7 +85,7 @@ $user_id = mysqli_insert_id($db_connect);
       die;
     }
     $uploading_image_size = $product_photo_three['size'];
-    if($uploading_image_size >= 500000){
+    if($uploading_image_size >= 5000000000){
       echo "You can not upload Photo more than 5 MB";
       die;
     }
@@ -104,7 +108,7 @@ $user_id = mysqli_insert_id($db_connect);
       die;
     }
     $uploading_image_size = $product_photo_four['size'];
-    if($uploading_image_size >= 500000){
+    if($uploading_image_size >= 5000000000){
       echo "You can not upload Photo more than 5 MB";
       die;
     }

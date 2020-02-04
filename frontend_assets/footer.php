@@ -84,18 +84,9 @@
 <section id="footer-btm">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-xs-12">
-               <div class="copywright">
-                    <p>Copyright &copy; 2017. All right reserved by <a href="index.html">E-BUY</a></p>
-                </div>
-            </div>
-            <div class="col-md-6 col-xs-12">
-                <div class="payment text-right">
-                    <img src="images/card1.png" alt="card" class="img-responsive">
-                    <img src="images/card2.png" alt="card" class="img-responsive">
-                    <img src="images/card3.png" alt="card" class="img-responsive">
-                    <img src="images/card4.png" alt="card" class="img-responsive">
-                    <img src="images/card5.png" alt="card" class="img-responsive">
+            <div class="col-md-12 col-xs-12">
+               <div class="copywright text-center">
+                    <p>&copy; 2019. Developed by <a href="https://www.facebook.com/fuadmia44" target="_blank"> Ashraful Fuad</a></p>
                 </div>
             </div>
         </div>
