@@ -220,8 +220,6 @@ require_once('backend_assets/db.php');
 
                                     //fuad
                                     if (mysqli_num_rows($results) == 1) :
-
-
                                     ?>
                                         <!-- user already liked -->
                                         <i class="like fa fa-heart sss" data-id="<?= $value['id'] ?>" style="color: blue"></i>
@@ -266,21 +264,22 @@ require_once('backend_assets/db.php');
     <div class="upcoming-bg">
         <div class="container">
             <div class="row">
-                <div class="upcoming-main">
+                <div class="upcoming-main" >
+                  <?php
+                  $take_data_from_database = "SELECT * FROM upcoming_table";
+                  $query = mysqli_query($db_connect, $take_data_from_database);
+                  $after_assoc = mysqli_fetch_assoc($query);
+                  ?>
                     <div class="col-md-6">
-                        <div class="upcoming-product-img">
-                            <img src="images/macbook.png" alt="macbook" class="img-responsive">
+                        <div class="upcoming-product-img" style="height: 100%; width: 100%; margin-left: 0pc">
+                            <img src="backend_assets/photos/upcoming_photo/<?=$after_assoc['upcoming_photo']?>" alt="macbook" class="img-responsive">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="upcoming-prouct-details">
-                            <h3>New Product</h3>
-                            <h2>Microsoft Surface Pro</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                              Loremsum has been the industry's standard dummy text ever since the 1500s,
-                              when an unknown printer took a galley of type and scrambled it to make a
-                               type specimen book. It hasived not only five centuries, with the release of
-                                Letraset sheets.</p>
+                            <h3>Upcoming  Product</h3>
+                            <h2><?=$after_assoc['upcoming_title']?></h2>
+                            <p><?=$after_assoc['upcoming_desc']?></p>
                         </div>
                         <div class="luanch">
                             <h2>launch in</h2>

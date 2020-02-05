@@ -10,20 +10,6 @@ require_once('backend_assets/db.php');
                <div class="header-content">
                    <div class="col-md-4">
                        <div class="header-left">
-                            <!-- <div class="sel-box">
-                                 <select class="bdr">
-                                    <option>ENG</option>
-                                    <option>BAN</option>
-                                    <option>ESP</option>
-                                </select>
-                            </div>
-                            <div class="sel-box">
-                                 <select>
-                                    <option>USD</option>
-                                    <option>EUR</option>
-                                    <option>GBP</option>
-                                </select>
-                            </div> -->
                             <div class="sel-box">
 
                               <?php
@@ -152,13 +138,9 @@ require_once('backend_assets/db.php');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="index.php" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="" href="index.php" >
                   Home
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="index.php">Home 1</a>
-                  <a class="dropdown-item" href="index2.html">Home 2</a>
-                </div>
               </li>
               <li><a class="dropdown-item" href="about.php">About</a></li>
               <li class="nav-item dropdown">

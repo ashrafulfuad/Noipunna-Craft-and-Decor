@@ -139,9 +139,10 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fa fa-address-book"></i> <span> View Internal Settings </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="view_about_id.php">View About Part</a></li>
-                                    <li><a href="view_background_id.php">View Background</a></li>
-                                    <li><a href="all_contact_list.php">View Contact Address</a></li>
+                                    <li><a href="view_about_id.php">About Part</a></li>
+                                    <li><a href="view_background_id.php">Background</a></li>
+                                    <li><a href="all_contact_list.php">Contact Address</a></li>
+                                    <li><a href="view_upcoming_product.php">Upcoming Product</a></li>
                                 </ul>
                             </li>
 

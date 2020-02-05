@@ -37,8 +37,8 @@ $query = mysqli_query($db_connect, $users_list_from_db);
                         <td><?php echo $value['email'] ?></td>
                         <td><img src="photos/<?php echo $value['profile_photo'] ?>" height="30" width="40"></td>
                         <td>
-                          <a href="delete_users_id.php?id=<?= $value['id']?>" class="btn btn-sm btn-danger"><i class="fa fi-trash"></i></a>
                           <a href="view_users_id.php?id=<?= $value['id']?>" class="btn btn-sm btn-success"><i class="fa icon-eye"></i></a>
+                          <a href="delete_users_id.php?id=<?= $value['id']?>" class="btn btn-sm btn-danger"><i class="fa fi-trash"></i></a>
                         </td>
                       </tr>
                     <?php
