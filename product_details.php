@@ -101,10 +101,11 @@ require_once('backend_assets/db.php');
                    <div class="product-details">
                        <div>
                           <h3><?=$after_assoc['product_name']?></h3>
+                          <input id="get_id" type="hidden" value="<?=$_GET['id']?>">
                           <!-- //fuad -->
                           <h4>
                               <i class="fa fa-heart"  style="color: red"></i>
-                              | (<span id="auto_load" value="<?=$_GET['id']?>"><?= $after_assoc['likes']?></span> People's Reacted)
+                              | (<span id="auto_load"><?= $after_assoc['likes']?></span> People's Reacted)
                           </h4>
                           <h5>TK <?=$after_assoc['product_price']?></h5>
                           <p><?=substr($after_assoc['product_desc'], 0, 300)?></p>
@@ -460,20 +461,10 @@ require_once('backend_assets/db.php');
            });
 
 
-
-
-
-
         setInterval(function () {
-          var id = $('#auto_load span').innerHTML;
-
-          alert(id);
-          // console.log(id);
-
- 				// $('#auto_load').load('demo.php?id='+ )
-
-
- 			}, 3000);
+          var id = document.getElementById("get_id").value;
+ 				$('#auto_load').load('details_like.php?id='+ id)
+ 			}, 30);
 
 
        })(jQuery);

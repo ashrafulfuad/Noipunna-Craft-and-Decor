@@ -245,8 +245,9 @@ require_once('backend_assets/db.php');
                                 <div class="clearfix"></div>
                             </div>
                             <div class="ratings" id="like_count">
-                              <i class="fa fa-heart"  style="color: red"></i>
-                              <span>| (<?= $value['likes']?> People's Reacted)</span>
+                              <i class="fa fa-heart"  style="color: red"></i>  |
+                              <input type="hidden" id="get_id" value="<?= $value['id']?>">
+                              (<span id="auto_load"> <?= $value['likes']?></span> People's Reacted)
                             </div>
                         </div>
                     <?php
@@ -426,7 +427,7 @@ require_once('backend_assets/db.php');
                             </div>
                             <div class="ratings" id="review">
                               <i class="fa fa-heart"  style="color: red"></i>
-                              <span>| (<?= $value['likes']?> People's Reacted)</span>
+                              <span>| (<?= $value['likes']?></span> People's Reacted)
                             </div>
                         </div>
                     <?php
@@ -562,6 +563,10 @@ require('frontend_assets/index_js.php');
                 }
             });
         });
+
+        setInterval(function () {
+ 				// $('#auto_load').load('index.php')
+ 			}, 30);
     })(jQuery);
 
 </script>
