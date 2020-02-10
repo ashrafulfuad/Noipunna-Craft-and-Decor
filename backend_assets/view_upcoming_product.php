@@ -48,7 +48,18 @@ $user_id = $after_assoc['id'];
               </tr>
             </table>
             <a href="edit_upcoming_id.php?id=<?=$user_id?>" class="btn btn-sm btn-secondary">Update Upcoming Product</a>
-            <a href="dashboard.php" class="btn btn-sm btn-light">Go To Dashboard</a>
+            <a href="dashboard.php" class="btn btn-sm btn-info">Dashboard</a>
+            <?php
+            if ($after_assoc['status'] == 1) {
+              ?>
+                <a href="active_deactive.php?id=<?=$after_assoc['id']?>" class="btn btn-sm btn-warning">Make Deactive</a>
+              <?php
+            }else{
+              ?>
+                <a href="active_deactive.php?id=<?=$after_assoc['id']?>" class="btn btn-sm btn-success">Make Active</a>
+              <?php
+            }
+            ?>
           </div>
         </div>
       </div>

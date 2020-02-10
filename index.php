@@ -264,66 +264,80 @@ require_once('backend_assets/db.php');
 <!-- Featured Part End -->
 
 <!-- Upcoming Part Start -->
-<section id="upcoming">
-    <div class="upcoming-bg">
-        <div class="container">
-            <div class="row">
-                <div class="upcoming-main" >
-                  <?php
-                  $take_data_from_database = "SELECT * FROM upcoming_table";
-                  $query = mysqli_query($db_connect, $take_data_from_database);
-                  $after_assoc = mysqli_fetch_assoc($query);
-                  ?>
-                    <div class="col-md-6">
-                        <div class="upcoming-product-img" style="height: 400px; width: 100%; margin-left: 0pc">
-                            <img src="backend_assets/photos/upcoming_photo/<?=$after_assoc['upcoming_photo']?>" alt="macbook" class="img-responsive" style="height: 400px; width: 100%">
+<?php
+$sql = "SELECT * from upcoming_table";
+$Assoc = mysqli_fetch_assoc(mysqli_query($db_connect, $sql));
+date_default_timezone_set('Asia/Dhaka');
+$today = new DateTime();
+$end_date = $Assoc['upcoming_date']." 23:59:59";
+$current_date = $today->format('Y-m-d H:i:s');
+if ($end_date <= $current_date) {
+  $siql = "UPDATE upcoming_table SET status= 2";
+  $query = mysqli_query($db_connect, $siql);
+}
+  if ($Assoc['status'] != 2) {
+    ?>
+    <section id="upcoming">
+        <div class="upcoming-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="upcoming-main" >
+                      <?php
+                      $take_data_from_database = "SELECT * FROM upcoming_table";
+                      $query = mysqli_query($db_connect, $take_data_from_database);
+                      $after_assoc = mysqli_fetch_assoc($query);
+                      ?>
+                        <div class="col-md-6">
+                            <div class="upcoming-product-img" style="height: 400px; width: 100%; margin-left: 0pc">
+                                <img src="backend_assets/photos/upcoming_photo/<?=$after_assoc['upcoming_photo']?>" alt="macbook" class="img-responsive" style="height: 400px; width: 100%">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="upcoming-prouct-details">
-                            <h3>Upcoming  Product</h3>
-                            <h4 style="color: #de4644; text-transform: uppercase"><?=$after_assoc['upcoming_title']?></h4>
-                            <p><?=$after_assoc['upcoming_desc']?></p>
-                        </div>
-                        <div class="luanch">
-                            <h2>launch in</h2>
-                            <?php
-                                date_default_timezone_set('Asia/Dhaka');
-                                $end_date = $after_assoc['upcoming_date'];
-                                $today = new DateTime();
-                                $endDate = new DateTime($end_date." 23:59:59");
-                                $interval = $today->diff($endDate);
-                            ?>
-                            <div class="coundown_res">
-                                <div class="count-item text-center">
-                                    <div class="coun">
-                                        <div class="coun_time">
-                                            <h2><?=$interval->format('%a');?></h2>
-                                            <p>days</p>
+                        <div class="col-md-6">
+                            <div class="upcoming-prouct-details">
+                                <h3>Upcoming  Product</h3>
+                                <h4 style="color: #de4644; text-transform: uppercase"><?=$after_assoc['upcoming_title']?></h4>
+                                <p><?=$after_assoc['upcoming_desc']?></p>
+                            </div>
+                            <div class="luanch">
+                                <h2>launch in</h2>
+                                <?php
+                                    date_default_timezone_set('Asia/Dhaka');
+                                    $end_date = $after_assoc['upcoming_date'];
+                                    $today = new DateTime();
+                                    $endDate = new DateTime($end_date." 23:59:59");
+                                    $interval = $today->diff($endDate);
+                                ?>
+                                <div class="coundown_res">
+                                    <div class="count-item text-center">
+                                        <div class="coun">
+                                            <div class="coun_time">
+                                                <h2><?=$interval->format('%a');?></h2>
+                                                <p>days</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="count-item text-center">
-                                    <div class="coun">
-                                        <div class="coun_time">
-                                            <h2><?=$interval->format('%h');?></h2>
-                                            <p>hours</p>
+                                    <div class="count-item text-center">
+                                        <div class="coun">
+                                            <div class="coun_time">
+                                                <h2><?=$interval->format('%h');?></h2>
+                                                <p>hours</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="count-item text-center">
-                                    <div class="coun">
-                                        <div class="coun_time">
-                                            <h2><?=$interval->format('%i');?></h2>
-                                            <p>mins</p>
+                                    <div class="count-item text-center">
+                                        <div class="coun">
+                                            <div class="coun_time">
+                                                <h2><?=$interval->format('%i');?></h2>
+                                                <p>mins</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="count-item text-center">
-                                    <div class="coun">
-                                        <div class="coun_time">
-                                            <h2><?=$interval->format('%s');?></h2>
-                                            <p>sec</p>
+                                    <div class="count-item text-center">
+                                        <div class="coun">
+                                            <div class="coun_time">
+                                                <h2><?=$interval->format('%s');?></h2>
+                                                <p>sec</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -333,8 +347,11 @@ require_once('backend_assets/db.php');
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <?php
+  }
+?>
+
 <!-- Upcoming Part End -->
 
 <!-- Latest Part Start -->

@@ -32,7 +32,7 @@ if (mysqli_query($db_connect, $sql)) {
     die;
   }
   $uploading_image_size = $upcoming_photo['size'];
-  if($uploading_image_size >= 500000000){
+  if($uploading_image_size >= 500000000000){
     echo "You can not upload Photo more than 5 MB";
     die;
   }

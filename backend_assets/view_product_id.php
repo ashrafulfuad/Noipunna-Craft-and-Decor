@@ -34,9 +34,9 @@
 
 
    <!-- Product Details Part start -->
-   <section id="details-of-product">
+   <section>
        <div class="container">
-         <h1 class="mb-3">View of <span style="color: blue"><?=$after_assoc['product_name']?></span></h1>
+         <h1 class="mb-3">Product View of <span style="color: blue"><?=$after_assoc['product_name']?></span></h1>
            <div class="row">
                <div class="col-md-6 tahsan2">
                    <div class="xzoom-container">
@@ -53,16 +53,9 @@
                    <div class="product-details">
                        <div>
                           <h3><strong>Product Name   :  </strong><?=$after_assoc['product_name']?></h3>
-                          <h3><strong>Product Review   :  </strong>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span>| (124 Reviews)</span>
-                          </h3>
                           <h5><strong>Product Price   :  </strong>TK <?=$after_assoc['product_price']?></h5>
-                          <p><strong>Product Descritions   :  </strong><?=$after_assoc['product_desc']?></p>
+                          <h3><strong>React  :  </strong><span> <i class="fa fa-heart" style="color:#de4644;"></i> | ( <?=$after_assoc['likes']?> Peoples Reacted )</span></h3>
+                          <p><strong>Product Descritions  :  </strong><?=$after_assoc['product_desc']?></p>
                        </div>
                    </div>
                    <div class="code-cate">
@@ -82,14 +75,6 @@
                        <p>P.Category<a href="#" class="tahsan3">: <?=$after_assoc_as_p_cat_id['p_category_name']?></a></p>
                        <p>Tags<a href="#" class="tahsan5">: T-shirt, Skirt</a></p>
                    </div>
-                   <div class="share">
-                    <h6>Share:</h6>
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-behance"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                      <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                  </div>
                   <div class="mt-3 pl-2">
                     <a href="all_product_list.php" class="btn btn-sm btn-info">Back to Product List</a>
                   </div>

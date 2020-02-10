@@ -155,6 +155,11 @@
                                 </ul>
                             </li>
 
+                            <!-- for like list -->
+                            <li>
+                                <a href="product_list_as_like.php"><i class="fa fa-heart" style="color:#de4644;"></i> <span style="color: #de4644"> Product List As Reacted</span> <span class="menu-arrow"></span></a>                              
+                            </li>
+
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-layers"></i> <span> Apps </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">

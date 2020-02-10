@@ -30,27 +30,34 @@ $after_assoc = mysqli_fetch_assoc($query);
              <label>Product Descritions</label>
              <textarea name="product_desc" class="form-control" rows="8" cols="80"><?=$after_assoc['product_desc']?></textarea>
            </div>
-           <div class="form-group">
-             <label>Product Photo One</label>
-             <img src="photos/product_photo/<?=$after_assoc['product_photo_one']?>" style="height: 30px; width: 30px" alt="">
-             <input type="file" value="<?php echo $after_assoc['product_photo_one']; ?>" name="product_photo_one" class="form-control">
+           <div class="row">
+             <div class="col-md-6">
+               <div class="form-group">
+                 <label>Product Main Photo</label>
+                 <img src="photos/product_photo/<?=$after_assoc['product_photo_one']?>" style="height: 30px; width: 30px" alt="">
+                 <input type="file" value="<?php echo $after_assoc['product_photo_one']; ?>" name="product_photo_one" class="form-control">
+               </div>
+               <div class="form-group">
+                 <label>Product Photo Two</label>
+                 <img src="photos/product_photo/<?=$after_assoc['product_photo_two']?>" style="height: 30px; width: 30px" alt="">
+                 <input type="file" value="<?php echo $after_assoc['product_photo_two']; ?>" name="product_photo_two" class="form-control">
+               </div>
+             </div>
+             <div class="col-md-6">
+               <div class="form-group">
+                 <label>Product Photo Three</label>
+                 <img src="photos/product_photo/<?=$after_assoc['product_photo_three']?>" style="height: 30px; width: 30px" alt="">
+                 <input type="file" value="<?php echo $after_assoc['product_photo_three']; ?>" name="product_photo_three" class="form-control">
+               </div>
+               <div class="form-group">
+                 <label>Product Photo Four</label>
+                 <img src="photos/product_photo/<?=$after_assoc['product_photo_four']?>" style="height: 30px; width: 30px" alt="">
+                 <input type="file" value="<?php echo $after_assoc['product_photo_four']; ?>" name="product_photo_four" class="form-control">
+               </div>
+             </div>
            </div>
-           <div class="form-group">
-             <label>Product Photo Two</label>
-             <img src="photos/product_photo/<?=$after_assoc['product_photo_two']?>" style="height: 30px; width: 30px" alt="">
-             <input type="file" value="<?php echo $after_assoc['product_photo_two']; ?>" name="product_photo_two" class="form-control">
-           </div>
-           <div class="form-group">
-             <label>Product Photo Three</label>
-             <img src="photos/product_photo/<?=$after_assoc['product_photo_three']?>" style="height: 30px; width: 30px" alt="">
-             <input type="file" value="<?php echo $after_assoc['product_photo_three']; ?>" name="product_photo_three" class="form-control">
-           </div>
-           <div class="form-group">
-             <label>Product Photo Four</label>
-             <img src="photos/product_photo/<?=$after_assoc['product_photo_four']?>" style="height: 30px; width: 30px" alt="">
-             <input type="file" value="<?php echo $after_assoc['product_photo_four']; ?>" name="product_photo_four" class="form-control">
-           </div>
-           <button type="submit" class="btn btn-info btn-sm">Update</button>
+          <button type="submit" class="btn btn-purple btn-big btn">Update</button>
+          <a href="all_product_list.php" class="btn btn" style="background: #fd7e14; color: #fff">Back to Product List</a>
          </form>
        </div>
 

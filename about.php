@@ -72,8 +72,14 @@ require_once('backend_assets/db.php');
                         <div class="main_counter_content text-center white-text wow fadeInUp">
                             <div class="col-md-2">
                                 <div class="single_counter p-y-2 m-t-1">
-                                    <h2 class="statistic-counter">261</h2>
-                                    <p>cup of tea</p>
+                                    <h2 class="statistic-counter">
+                                      <?php
+                                      $sql = "SELECT count(*) from product_table";
+                                      $conn = mysqli_query($db_connect, $sql);
+                                      
+                                      ?>
+                                    </h2>
+                                    <p>total product</p>
                                 </div>
                             </div>
                             <div class="col-md-3">
