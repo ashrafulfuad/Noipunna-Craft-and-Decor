@@ -17,6 +17,7 @@ if (mysqli_query($db_connect, $sql)) {
   $after_assoc = mysqli_fetch_assoc($query);
   if (empty($upcoming_photo['name'])) {
     header("location: view_upcoming_product.php");
+    die;
   }
   if (isset($upcoming_photo['name'])) {
     $photo_path = "photos/upcoming_photo/".$after_assoc['upcoming_photo'];

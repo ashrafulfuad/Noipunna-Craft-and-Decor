@@ -18,6 +18,16 @@ $user_id = $after_assoc['id'];
 
 <div class="col-lg-12 mb-3">
       <h1>View of<span style="color: green"> Upcoming Product</span></h1><hr>
+      <?php
+      date_default_timezone_set('Asia/Dhaka');
+      $today = new DateTime();
+      $end_date = $after_assoc['upcoming_date']." 23:59:59";
+      $current_date = $today->format('Y-m-d H:i:s');
+      if ($end_date <= $current_date) {
+        $sql = "UPDATE upcoming_table SET status= 2 where id='$user_id'";
+        $query = mysqli_query($db_connect, $sql);
+      }
+      ?>
       <div class="row">
         <div class="col-lg-6">
           <div class="">

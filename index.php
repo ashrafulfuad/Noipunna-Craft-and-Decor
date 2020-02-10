@@ -288,15 +288,17 @@ require_once('backend_assets/db.php');
                         <div class="luanch">
                             <h2>launch in</h2>
                             <?php
-                            echo date('d-m-y');
-                            echo "<br>";
-                            echo date('F j, Y, g:i a', time() - 6*3600);
-                             ?>
+                                date_default_timezone_set('Asia/Dhaka');
+                                $end_date = $after_assoc['upcoming_date'];
+                                $today = new DateTime();
+                                $endDate = new DateTime($end_date." 23:59:59");
+                                $interval = $today->diff($endDate);
+                            ?>
                             <div class="coundown_res">
                                 <div class="count-item text-center">
                                     <div class="coun">
                                         <div class="coun_time">
-                                            <h2 id="day"></h2>
+                                            <h2><?=$interval->format('%a');?></h2>
                                             <p>days</p>
                                         </div>
                                     </div>
@@ -304,7 +306,7 @@ require_once('backend_assets/db.php');
                                 <div class="count-item text-center">
                                     <div class="coun">
                                         <div class="coun_time">
-                                            <h2 id="hour"></h2>
+                                            <h2><?=$interval->format('%h');?></h2>
                                             <p>hours</p>
                                         </div>
                                     </div>
@@ -312,7 +314,7 @@ require_once('backend_assets/db.php');
                                 <div class="count-item text-center">
                                     <div class="coun">
                                         <div class="coun_time">
-                                            <h2 id="month"></h2>
+                                            <h2><?=$interval->format('%i');?></h2>
                                             <p>mins</p>
                                         </div>
                                     </div>
@@ -320,7 +322,7 @@ require_once('backend_assets/db.php');
                                 <div class="count-item text-center">
                                     <div class="coun">
                                         <div class="coun_time">
-                                            <h2 id="second"></h2>
+                                            <h2><?=$interval->format('%s');?></h2>
                                             <p>sec</p>
                                         </div>
                                     </div>
