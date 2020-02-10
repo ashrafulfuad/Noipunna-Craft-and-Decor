@@ -52,9 +52,9 @@
                     <!-- User box -->
                     <div class="user-box">
                         <div class="user-img">
-                            <img src="../backend_assets/photos/<?=$_SESSION['profile_photo']?>" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
+                            <a href="view_users_id.php?id=<?=$_SESSION['id']?>"><img src="../backend_assets/photos/<?=$_SESSION['profile_photo']?>" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid"></a>
                         </div>
-                        <h5><a href="#"><?=$_SESSION['username']?></a> </h5>
+                        <h5><a href="view_users_id.php?id=<?=$_SESSION['id']?>"><?=$_SESSION['username']?></a> </h5>
                         <p class="text-muted"><?=$_SESSION['email']?></p>
                     </div>
 

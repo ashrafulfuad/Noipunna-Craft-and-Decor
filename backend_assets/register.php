@@ -1,21 +1,12 @@
 <?php
 session_start();
 require('db.php');
-require_once('header.php');
 
 if(!isset($_SESSION['login_ok'])){
   header('location: login.php');
 }
+require_once('header.php');
 ?>
-
-
-
-
-
-
-
-
-
 
       <div class="container" style="margin-bottom: 200px">
         <div class="row">
@@ -43,8 +34,6 @@ if(!isset($_SESSION['login_ok'])){
           </div>
         </div>
       </div>
-
-
 
       <?php
         require_once('footer.php');

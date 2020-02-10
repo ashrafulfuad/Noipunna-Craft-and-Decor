@@ -155,6 +155,9 @@ require_once('backend_assets/db.php');
                         $for_filter = $val['id'];
                         ?>
                     </div>
+                    <div id="habu">
+
+                    </div>
 
                     <?php
                     $product_list_from_db = "SELECT * FROM product_table";
@@ -204,10 +207,10 @@ require_once('backend_assets/db.php');
                         exit();
                     }
 
-                    foreach ($query as $value) {
+                    foreach ($query as $key => $value) {
                         $id = '';
                     ?>
-                        <div class="gallery_product col-md-3 col-sm-4 filter <?= $value['cat_id'] ?>">
+                        <div id="filter" class="gallery_product col-md-3 col-sm-4 filter <?= $value['cat_id'] ?>">
                             <div class="featured-product">
                                 <a href="product_details.php?id=<?= $value['id'] ?>">
                                   <img src="backend_assets/photos/product_photo/<?= $value['product_photo_one'] ?>" alt="featured-product-img" class="img-responsive" style="height:280px; width: 100%">
@@ -218,7 +221,6 @@ require_once('backend_assets/db.php');
 
                                     $results = mysqli_query($db_connect, $likes);
 
-                                    //fuad
                                     if (mysqli_num_rows($results) == 1) :
                                     ?>
                                         <!-- user already liked -->
@@ -245,10 +247,12 @@ require_once('backend_assets/db.php');
                             <div class="ratings" id="like_count">
                               <i class="fa fa-heart"  style="color: red"></i>  |
                               <input type="hidden" id="get_id" value="<?= $value['id']?>">
-                              (<span id="auto_load"> <?= $value['likes']?></span> People's Reacted)
+                              (<span id="auto_load"></span> People's Reacted)
                             </div>
+                            <!-- //fuad -->
                         </div>
                     <?php
+                    // return back();
                     }
                     ?>
 
@@ -271,18 +275,23 @@ require_once('backend_assets/db.php');
                   $after_assoc = mysqli_fetch_assoc($query);
                   ?>
                     <div class="col-md-6">
-                        <div class="upcoming-product-img" style="height: 100%; width: 100%; margin-left: 0pc">
-                            <img src="backend_assets/photos/upcoming_photo/<?=$after_assoc['upcoming_photo']?>" alt="macbook" class="img-responsive">
+                        <div class="upcoming-product-img" style="height: 400px; width: 100%; margin-left: 0pc">
+                            <img src="backend_assets/photos/upcoming_photo/<?=$after_assoc['upcoming_photo']?>" alt="macbook" class="img-responsive" style="height: 400px; width: 100%">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="upcoming-prouct-details">
                             <h3>Upcoming  Product</h3>
-                            <h2><?=$after_assoc['upcoming_title']?></h2>
+                            <h4 style="color: #de4644; text-transform: uppercase"><?=$after_assoc['upcoming_title']?></h4>
                             <p><?=$after_assoc['upcoming_desc']?></p>
                         </div>
                         <div class="luanch">
                             <h2>launch in</h2>
+                            <?php
+                            echo date('d-m-y');
+                            echo "<br>";
+                            echo date('F j, Y, g:i a', time() - 6*3600);
+                             ?>
                             <div class="coundown_res">
                                 <div class="count-item text-center">
                                     <div class="coun">
@@ -399,7 +408,7 @@ require_once('backend_assets/db.php');
 
                                   $results = mysqli_query($db_connect, $likes);
 
-                                  //fuad
+                                  //
                                   if (mysqli_num_rows($results) == 1) :
 
 
@@ -562,11 +571,18 @@ require('frontend_assets/index_js.php');
                 }
             });
         });
-
-        setInterval(function () {
- 				// $('#auto_load').load('index.php')
- 			}, 30);
     })(jQuery);
+
+      setInterval(function () {
+          $('#auto_load').load('index_like.php');
+    }, 30);
+
+
+
+
+    // $('li').each(function () {
+    //   alert($(this).text());
+    // });
 
 </script>
 </body>

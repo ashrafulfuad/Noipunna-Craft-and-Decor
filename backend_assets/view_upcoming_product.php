@@ -28,13 +28,13 @@ $user_id = $after_assoc['id'];
           <div class="">
             <table class="table table-bordered table-dark">
               <tr>
+                <td><strong>Title  :</strong>   <span style="color: yellow"><?=$after_assoc['upcoming_title']?></span></td>
+              </tr>
+              <tr>
                 <td><strong>Description  :</strong>   <?=$after_assoc['upcoming_desc']?></td>
               </tr>
               <tr>
                 <td><strong>Date :</strong>  <?=$after_assoc['upcoming_date']?></td>
-              </tr>
-              <tr>
-                <td><strong>Time :</strong>  <?=$after_assoc['upcoming_time']?></td>
               </tr>
             </table>
             <a href="edit_upcoming_id.php?id=<?=$user_id?>" class="btn btn-sm btn-secondary">Update Upcoming Product</a>
