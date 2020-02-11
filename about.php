@@ -74,9 +74,9 @@ require_once('backend_assets/db.php');
                                 <div class="single_counter p-y-2 m-t-1">
                                     <h2 class="statistic-counter">
                                       <?php
-                                      $sql = "SELECT count(*) from product_table";
-                                      $conn = mysqli_query($db_connect, $sql);
-                                      
+                                      $sql = "SELECT count(*) as total from product_table";
+                                      $conn = mysqli_fetch_assoc(mysqli_query($db_connect, $sql));
+                                      echo $conn['total'];
                                       ?>
                                     </h2>
                                     <p>total product</p>
@@ -84,8 +84,14 @@ require_once('backend_assets/db.php');
                             </div>
                             <div class="col-md-3">
                                 <div class="single_counter p-y-2 m-t-1">
-                                    <h2 class="statistic-counter">718</h2>
-                                    <p>product sold</p>
+                                    <h2 class="statistic-counter">
+                                      <?php
+                                      $sql = "SELECT count(*) as total from likes";
+                                      $conn = mysqli_fetch_assoc(mysqli_query($db_connect, $sql));
+                                      echo $conn['total'];
+                                      ?>
+                                    </h2>
+                                    <p>total reaction</p>
                                 </div>
                             </div>
                             <div class="col-md-2">

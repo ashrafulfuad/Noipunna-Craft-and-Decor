@@ -137,23 +137,9 @@ require_once('backend_assets/db.php');
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="" href="index.php" >
-                  Home
-                </a>
-              </li>
-              <li><a class="dropdown-item" href="about.php">About</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Shop
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <!-- <a class="dropdown-item" href="product-grid-view.html">Product Grid View</a> -->
-                  <a class="dropdown-item" href="product_grid_view_with_sidebar.php">Product View</a>
-                  <!-- <a class="dropdown-item" href="product-list-view-with-sidebar.html">Product List View With Sidebar</a> -->
-                  <a class="dropdown-item" href="product_details.php">Product Details</a>
-                </div>
-              </li>
+            <li><a class="" href="index.php">Home</a></li>
+            <li><a class="dropdown-item" href="about.php">About</a></li>
+            <li><a class="dropdown-item" href="product_grid_view_with_sidebar.php">Products</a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Pages

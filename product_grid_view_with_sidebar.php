@@ -4,7 +4,6 @@ session_start();
 require('frontend_assets/product_grid_view_with_sidebar_css.php');
 require('frontend_assets/header.php');
 require_once('backend_assets/db.php');
-
 ?>
 
    <!-- About Banner Start -->
@@ -47,151 +46,6 @@ require_once('backend_assets/db.php');
                             ?>
                         </ul>
                    </div>
-                   <!-- <div class="single category brand-name">
-                    <h3 class="side-title">Brand Name</h3>
-                        <ul>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox2" type="checkbox">
-                                    <label for="checkbox2">Nokia</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox3" type="checkbox">
-                                    <label for="checkbox3">Samsung</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox4" type="checkbox">
-                                    <label for="checkbox4">Apple</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox5" type="checkbox">
-                                    <label for="checkbox5">Blackberry</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox6" type="checkbox">
-                                    <label for="checkbox6">HTC</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox7" type="checkbox">
-                                    <label for="checkbox7">Symphony</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox8" type="checkbox">
-                                    <label for="checkbox8">Walton</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox9" type="checkbox">
-                                    <label for="checkbox9">Micromax</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox10" type="checkbox">
-                                    <label for="checkbox10">Maximus</label>
-                                </div>
-                            </li>
-                        </ul>
-                   </div>
-                   <div class="single category price-range">
-                        <h3 class="side-title price-title">Filter By Price</h3>
-                        <div id="slider"></div>
-                   </div>
-                   <div class="single category brand-name">
-                    <h3 class="side-title">Filter By Color</h3>
-                        <ul>
-                            <li>
-                                <div class="checkbox chek2 checkbox-success">
-                                    <input id="checkbox11" type="checkbox">
-                                    <label for="checkbox11">Orange</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox chek3 checkbox-success">
-                                    <input id="checkbox12" type="checkbox">
-                                    <label for="checkbox12">Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox chek4 checkbox-success">
-                                    <input id="checkbox13" type="checkbox">
-                                    <label for="checkbox13">Blue</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox chek5 checkbox-success">
-                                    <input id="checkbox14" type="checkbox">
-                                    <label for="checkbox14">Green</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox chek6 checkbox-success">
-                                    <input id="checkbox15" type="checkbox">
-                                    <label for="checkbox15">black</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox chek7 checkbox-success">
-                                    <input id="checkbox16" type="checkbox">
-                                    <label for="checkbox16">Pink</label>
-                                </div>
-                            </li>
-                        </ul>
-                   </div>
-                   <div class="single category brand-name tahsan12">
-                    <h3 class="side-title">filter by size</h3>
-                        <ul>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox17" type="checkbox">
-                                    <label for="checkbox17">All Sizes</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox18" type="checkbox">
-                                    <label for="checkbox18">Extra large</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox19" type="checkbox">
-                                    <label for="checkbox19">Large</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox20" type="checkbox">
-                                    <label for="checkbox20">medium</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox21" type="checkbox">
-                                    <label for="checkbox21">small</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox checkbox-primary">
-                                    <input id="checkbox22" type="checkbox">
-                                    <label for="checkbox22">XXL</label>
-                                </div>
-                            </li>
-                        </ul>
-                   </div> -->
                </div>
                <div class="col-md-9">
                   <div class="pro-grid-sidebar col-md-12">
@@ -207,31 +61,12 @@ require_once('backend_assets/db.php');
                        </div>
                        <div class="col-md-4 col-sm-8">
                            <div class="sort text-right">
-
-
-
-
-  <!-- <label>Sort by</label>
-  <select>
-    <option>Name</option>
-    <option>Price</option>
-    <option>Id</option>
-  </select> -->
-
-
-
-
-
-
                                <label>Showing</label>
                                <select>
                                    <option value="Name">12</option>
                                    <option value="brand">18</option>
                                    <option value="price">24</option>
                                </select>
-
-
-
                            </div>
                        </div>
                        <div class="col-md-6 col-sm-12">
@@ -337,58 +172,7 @@ require_once('backend_assets/db.php');
    </section>
   <!-- Product-item end -->
 
-   <!-- Brand Part Start -->
-   <section id="brand">
-      <i class="fa fa-chevron-left prv-arrow4"></i>
-      <i class="fa fa-chevron-right nxt-arrow4"></i>
-       <div class="container">
-           <div class="row">
-               <div class="brand-slider">
-                   <div class="col-md-2">
-                       <div class="brand-item">
-                           <a href="#"><img src="images/brand2.png" alt="brand" class="img-responsive"></a>
-                       </div>
-                   </div>
-                   <div class="col-md-2">
-                       <a href="#">
-                           <div class="brand-item">
-                              <img src="images/brand1.png" alt="brand" class="img-responsive">
-                           </div>
-                       </a>
-                   </div>
-                   <div class="col-md-2">
-                       <a href="#">
-                           <div class="brand-item">
-                               <img src="images/brand3.png" alt="brand" class="img-responsive">
-                           </div>
-                       </a>
-                   </div>
-                   <div class="col-md-2">
-                       <a href="#">
-                           <div class="brand-item">
-                               <img src="images/brand4.png" alt="brand" class="img-responsive">
-                           </div>
-                       </a>
-                   </div>
-                   <div class="col-md-2">
-                       <a href="#">
-                           <div class="brand-item">
-                               <img src="images/brand5.png" alt="brand" class="img-responsive">
-                           </div>
-                       </a>
-                   </div>
-                   <div class="col-md-2">
-                       <a href="#">
-                           <div class="brand-item">
-                               <img src="images/brand3.png" alt="brand" class="img-responsive">
-                           </div>
-                       </a>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
-   <!-- Brand End -->
+
 
 
    <?php
