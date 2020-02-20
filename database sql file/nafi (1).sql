@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2020 at 10:29 AM
+-- Generation Time: Feb 20, 2020 at 07:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -130,7 +130,7 @@ INSERT INTO `client_message_table` (`id`, `client_name`, `client_email`, `client
 (5, 'Nafu Alam', 'nafi@alam.com', '123456789', 'Uttora , Dhaka', 'Lorem ipsum dolor sit amet.', 2),
 (6, 'Shuhad Mia', 'shuhad@mia.com', '123456', 'CTG', 'lormen ipsum dolor sit amet', 2),
 (7, 'Rafid', 'rafid@mia.com', '123456987', 'ctg', 'lomem ipsum dolor sit amet.', 1),
-(8, 'Tahsin Apu', 'tahsin@apu', '321654987', 'Feni', 'lorem ipsum dolor sit amet.', 1),
+(8, 'Tahsin Apu', 'tahsin@apu', '321654987', 'Feni', 'lorem ipsum dolor sit amet.', 2),
 (9, 'Sami', 'sami@live.org', '321987', 'Boshurhat', 'lorem ipsum dolor sit amet', 2),
 (10, 'Najiyah', 'najiyah@live.com', '3215879', 'Boshurhat', 'lorem ipsum dolor sit amet.', 2),
 (11, 'Wasi Babu', 'wasi@babu.com', '2546987', 'Boshurhat', 'lorem ipsum dolor sit amet.', 2),
@@ -242,11 +242,13 @@ INSERT INTO `likes` (`id`, `ip_address`, `product_id`) VALUES
 (476, '::1', 66),
 (517, '::1', 59),
 (542, '::1', 57),
-(581, '::1', 55),
-(590, '::1', 54),
 (591, '::1', 52),
 (592, '::1', 58),
-(593, '::1', 67);
+(593, '::1', 67),
+(594, '::1', 54),
+(596, '::1', 56),
+(598, '::1', 70),
+(600, '::1', 55);
 
 -- --------------------------------------------------------
 
@@ -332,8 +334,8 @@ CREATE TABLE `product_table` (
 INSERT INTO `product_table` (`id`, `product_name`, `product_price`, `product_desc`, `cat_id`, `p_cat_id`, `product_photo_one`, `product_photo_two`, `product_photo_three`, `product_photo_four`, `likes`) VALUES
 (52, 'Watch', 350, 'this is the watch of our country', 5, 1, '52(one)-edited.jpg', '52(two)-edited.jpg', '52(three)-edited.jpg', '52(four)-edited.jpg', 9),
 (54, 'Pen', 30, 'this is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi', 3, 2, '54(one).jpg', '54(two)-edited.jpg', '54(three).jpg', '54(four).jpg', 6),
-(55, 'Book', 665, 'this is a kind of book in our country like Bangladesh the computer google search is not a google search this is like a search of Bangladeshi  fuzzy search ', 5, 4, 'default_p_photo.jpg', 'default_p_photo.jpg', '55(three).jpg', 'default_p_photo.jpg', 5),
-(56, 'Legendary Birikhor', 350, 'amar sonar bangla ami tmi tomay valo bashi chiro din tomar akash tomar batash amar  prane omayamar prane bajay bashi sonar bangla ami tomay valo bashi \r\nki shoba ki chaya go ki sneho ki maya go ki achol bichay eso boter mule nodir kule kule \r\nmator mukher bani amar kane lage shudhar moto mori hay hay re ma tor mukher bani amar kane lage shudhar moto ma \r\ntor bodol khani molin hole ami noyon oma ami noyon jole vashi sonar banlga ami tomay valo bashi', 5, 5, '56(one)-edited.jpg', '56(two)-edited.jpg', '56(three).jpg', '56(four).jpg', 4),
+(55, 'Book', 665, 'this is a kind of book in our country like Bangladesh the computer google search is not a google search this is like a search of Bangladeshi  fuzzy search ', 5, 4, 'default_p_photo.jpg', 'default_p_photo.jpg', '55(three).jpg', 'default_p_photo.jpg', 6),
+(56, 'Legendary Birikhor', 350, 'amar sonar bangla ami tmi tomay valo bashi chiro din tomar akash tomar batash amar  prane omayamar prane bajay bashi sonar bangla ami tomay valo bashi \r\nki shoba ki chaya go ki sneho ki maya go ki achol bichay eso boter mule nodir kule kule \r\nmator mukher bani amar kane lage shudhar moto mori hay hay re ma tor mukher bani amar kane lage shudhar moto ma \r\ntor bodol khani molin hole ami noyon oma ami noyon jole vashi sonar banlga ami tomay valo bashi', 5, 5, '56(one)-edited.jpg', '56(two)-edited.jpg', '56(three).jpg', '56(four).jpg', 5),
 (57, 'Mobile', 33340, 'this is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi', 5, 7, '57(one).jpg', '57(two).jpg', '57(three).jpg', '57(four).jpg', 4),
 (58, 'Monitor', 36954, 'this is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi', 4, 1, '58(one).jpg', '58(two).jpg', '58(three).jpg', '58(four).jpg', 4),
 (59, 'Wallet', 100, 'amar sonar bangla ami tomay valo bashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi oma amar sonar bangla ami tomay valo bashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi oma amar sonar bangla ami tomay valo bashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi oma amar sonar bangla ami tomay valo bashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi oma ', 6, 9, '59(one).jpg', '59(two).jpg', '59(three).jpg', '59(four).jpg', 4),
@@ -345,7 +347,8 @@ INSERT INTO `product_table` (`id`, `product_name`, `product_price`, `product_des
 (65, 'Body Spray', 650, 'this is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi', 6, 7, '65(one).jpg', '65(two).jpg', '65(three).jpg', '65(four).jpg', 3),
 (66, 'Lighter', 12, 'this is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashithis is the pen of bangladesh or you could say in Indian pen is this amar sonar bangla ami tomay valobashi chirodin tomar akash tomar batash amar prane oma yamar prane bajay bashi sonar bangla ami tomay valo bashi', 3, 1, '66(one)-edited.jpg', '66(two).jpg', '66(three).jpg', '66(four).jpg', 4),
 (67, 'Tooth Brush', 30, 'AMR sonar bangla ami tomay valo bashi chirodin tomar akash tomar batash amar prane omayamar prane bajay bashi sonar bangla ami tomay valobashi oma fagune tor amer bone grane pagol kore oma ograne tor bora khete ami noyon omayami noyon jole nar bangla ami tomay valobashi oma fagune tor amer bone grane pagol kore oma ograne tor bora khete ami noyon omayami noyon jole nar bangla ami tomay valobashi oma fagune tor amer bone grane pagol kore oma ograne tor bora khete ami noyon omayami noyon jole ', 6, 4, '67(one).jpg', '67(two).jpg', '67(three).jpg', '67(four).jpg', 4),
-(69, 'Closeup', 40, 'The song was written in 1905 during the first partition of Bengal, when the ruling British Empire had an undivided province of Bengal Presidency split into two parts; the decision was announced on 19 July by the then-Viceroy of India Lord Curzon, taking effect on 16 October. ', 4, 9, '69(one).png', '69(two).jpg', '69(three).jpg', 'default_p_photo.jpg', 1);
+(69, 'Closeup', 40, 'The song was written in 1905 during the first partition of Bengal, when the ruling British Empire had an undivided province of Bengal Presidency split into two parts; the decision was announced on 19 July by the then-Viceroy of India Lord Curzon, taking effect on 16 October. ', 4, 9, '69(one).png', '69(two).jpg', '69(three).jpg', 'default_p_photo.jpg', 1),
+(70, 'Fuad', 29, 'Picchi beyadop ', 3, 10, '70(one).jpg', '70(two).png', '70(three).jpg', '70(four).png', 1);
 
 -- --------------------------------------------------------
 
@@ -443,7 +446,7 @@ CREATE TABLE `upcoming_table` (
 --
 
 INSERT INTO `upcoming_table` (`id`, `upcoming_photo`, `upcoming_title`, `upcoming_desc`, `upcoming_date`, `upcoming_time`, `status`) VALUES
-(3, '3.jpg', 'Laddy Shoes', 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', '2020-02-11', '00-00 am', 1);
+(3, '3.jpg', 'Laddy Shoes', 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', '2020-02-11', '00-00 am', 2);
 
 -- --------------------------------------------------------
 
@@ -636,7 +639,7 @@ ALTER TABLE `contact_table`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=594;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=601;
 
 --
 -- AUTO_INCREMENT for table `member_table`
@@ -654,7 +657,7 @@ ALTER TABLE `m_as_p`
 -- AUTO_INCREMENT for table `product_table`
 --
 ALTER TABLE `product_table`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `p_category_table`
